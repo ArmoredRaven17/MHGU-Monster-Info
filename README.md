@@ -57,11 +57,20 @@ Two honesty rules carried through from the extraction:
 
 ### Part names
 
-**The game files contain no part names.** A hit zone's only identity in the
-RomFS is its slot index: `dttune` is pure numbers, the companion `dtbparts`
-resource is binary config with no strings, and no text table in the game
-(all 119 English `.gmd` files) holds a monster part vocabulary. Every part
-name you see in this app — or in any MHGU database — is community-supplied.
+**The game files contain no part names — none that are tied to a hit zone.**
+A hit zone's only identity in the RomFS is its slot index: `dttune` is pure
+numbers, the companion `dtbparts` resource is variable-length binary config
+(magic `DTP\0`) with no strings, and scanning all 2,242 English `.gmd` files
+and all 1,587 resources inside sample enemy arcs turns up no slot-indexed
+part vocabulary anywhere.
+
+The game does name parts *in prose*, just never against a slot: 201 quest
+subtargets ("Sever Glavenus's tail", "Wound Volvidon's back") and 395 item
+names built from body parts (Hardhorn, Keenclaw, Finehide). Those are what
+a human can correlate — via a monster's break/reward config — back to a
+numbered hit zone. That correlation is judgement, not extraction, which is
+why every part name in this app or any MHGU database is community-supplied
+and why two databases can disagree about it.
 
 So names have to be earned rather than assumed. A monster's parts are named
 only when both of these hold:
