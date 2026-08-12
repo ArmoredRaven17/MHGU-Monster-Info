@@ -60,7 +60,6 @@ const allZero = r => r.every(v => v === 0);
 // heads) carry mid-range elements and stay parts.
 const isPad = r => allZero(r) || (r.slice(0, 9).every(v => v === 0) && r[9] === 100)
   || (r[0] === 100 && r[1] === 100 && r[2] === 100 && r.slice(3, 8).every(v => v === 0 || v === 100));
-const rowsEq = (a, b) => a.every((v, i) => v === b[i]);
 
 // A real std hit-zone row: physicals <=125, elements <=100, stun <=200,
 // exhaust 0 or >=100, and substance beyond a lone byte (kills the float-count row).
@@ -97,31 +96,18 @@ function findStartStd(b) {
 function parseStd(b, start) {
   const rows = []; let o = start;
   while (o + 10 <= b.length) { const r = row10(b, o); if (isCountRow(r) || !stdRowOk(r)) break; rows.push(r); o += 10; }
-  while (rows.length && isPad(rows[rows.length - 1])) rows.pop();   // trim trailing pads (keep interior ones for slots)
-  const M = rows.length;
-  if (!M) return [];
-  // stride-8 parallel tables?
-  const padded = Math.ceil(M / 8) * 8;
-  let blocks = 1;
-  if (padded > 8) {
-    let ok = true;
-    for (let bnd = 8; bnd < M; bnd += 8) {
-      const r = rows[bnd];
-      const headLike = r && (r[8] >= 100 || rowsEq(r, rows[0]));
-      const padBefore = isPad(rows[bnd - 1]);
-      if (!(headLike || padBefore)) { ok = false; break; }
-    }
-    if (ok) blocks = Math.ceil(M / 8);
-  }
+  // Regions measure 8 or 16 rows, sometimes plus one stray all-zero row before
+  // the float section, so floor to whole 8-slot blocks. Do NOT infer block
+  // boundaries from row content: Fatalis carries no stun on any part (no
+  // "head" marker) and Stonefist Hermitaur's second block opens on two pad
+  // slots, so both would read as one long table under a content heuristic.
+  const blocks = Math.floor(rows.length / 8);
+  if (!blocks) return [];
   const tables = [];
-  if (blocks === 1) {
-    tables.push(rows.map((r, i) => ({ slot: i, row: r })).filter(p => !isPad(p.row)));
-  } else {
-    for (let t = 0; t < blocks; t++) {
-      const parts = [];
-      for (let s = 0; s < 8; s++) { const r = rows[t * 8 + s]; if (r && !isPad(r)) parts.push({ slot: s, row: r }); }
-      if (parts.length) tables.push(parts);
-    }
+  for (let t = 0; t < blocks; t++) {
+    const parts = [];
+    for (let s = 0; s < 8; s++) { const r = rows[t * 8 + s]; if (!isPad(r)) parts.push({ slot: s, row: r }); }
+    if (parts.length) tables.push(parts);
   }
   return tables;
 }
@@ -159,17 +145,25 @@ function parseSiege(b, start) {
 
 function partObj(slot, r, name) { const o = { slot }; if (name) o.name = name; KEYS.forEach((k, j) => o[k] = r[j]); return o; }
 
-const files = readdirSync(ARCDIR).filter(f => /^ems?\d+_00\.arc$/.test(f)).sort();
+// Every enemy arc, base and variant. The _NN suffix selects the variant:
+// _00 base, _01/_02 subspecies & rare species, _04 deviants, _05 the
+// "Furious/Savage/Raging/Chaotic" variants. The DB keys those as
+// suffix * 256 + em number (small monsters occupy the suffix-16 block).
+const files = readdirSync(ARCDIR).filter(f => /^ems?\d+_\d+\.arc$/.test(f)).sort();
 const out = {}; const problems = [];
 for (const f of files) {
   const id = f.replace('.arc', ''); const small = /^ems/.test(id);
-  const num = parseInt(id.match(/\d+/)[0], 10); const dbId = small ? 4096 + num : num;
+  const [num, variant] = id.match(/\d+/g).map(Number);
+  const dbId = (small ? 16 : variant) * 256 + num;
   const name = idNames[dbId] || null;
   let b; try { b = getDt(`${ARCDIR}/${f}`); } catch { b = null; }
   if (!b) { out[id] = { name, error: 'no-dttune' }; problems.push(`${id}:no-dttune`); continue; }
   const hp = b.readUInt32LE(0x38);
   // em087 uses a 2-byte-prefixed record layout the std/siege parsers misread
-  // into garbage rows; keep it flagged until it gets its own decoder.
+  // into garbage rows; keep it flagged until it gets its own decoder. It is
+  // the only large monster on Kiranico we don't ship — their Ahtal-Neset
+  // (the wall phase of the Ahtal-Ka fight), which the community DB has no
+  // entry for, so `name` stays null rather than inventing one.
   if (id === 'em087_00') { out[id] = { name, hp, error: 'non-standard-format' }; problems.push(`${id}=${name}:non-standard`); continue; }
   let mode = 'std', start = findStartStd(b), tablesRaw;
   if (start >= 0) tablesRaw = parseStd(b, start);

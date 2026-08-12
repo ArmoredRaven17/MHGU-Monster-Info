@@ -30,12 +30,21 @@ included in this repo — see [NOTICE.md](NOTICE.md)). Nothing under
 node scripts/build-data.mjs
 ```
 
-Every large monster's tables have been verified against Kiranico: 64 of 67
-match its published tables exactly, and the other three (Glavenus, Astalos,
-Nakarkos) hold the same values with Kiranico regrouping the game's sparse
-state slots into extra display tables. Small monsters have no published
-reference to check against. One monster (em087, HP 11000) uses a record
-layout the decoder doesn't handle yet and is not shown.
+The app covers 129 monsters — 93 large and 36 small, which is every monster
+Kiranico lists but one. Deviants, subspecies and rare species are separate
+entries, decoded from the variant arcs alongside their base monster.
+
+Every large monster's tables have been verified against Kiranico: 87 of 93
+match its published tables exactly; four more (Glavenus, Astalos, Soulseer
+Mizutsune, Nakarkos) hold exactly the same values with Kiranico regrouping
+the game's 8-slot blocks into different display tables; and two (Boltreaver
+Astalos, Elderfrost Gammoth) contain two rows each that Kiranico's page
+omits. No monster is missing a row Kiranico publishes. Small monsters have
+no published reference to check against.
+
+The one monster not shown is em087 (HP 11000) — Kiranico's Ahtal-Neset, the
+wall phase of the Ahtal-Ka fight. It uses a record layout the decoder
+doesn't handle yet.
 
 Two honesty rules carried through from the extraction:
 
@@ -45,7 +54,7 @@ Two honesty rules carried through from the extraction:
   they're verified.
 - **Part names only where verified.** Names were assigned only where the
   extracted table byte-matched the community database's part list in order
-  (32 monsters); everywhere else parts show a numbered label until verified.
+  (36 monsters); everywhere else parts show a numbered label until verified.
 
 ## Local development
 

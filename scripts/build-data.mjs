@@ -35,8 +35,14 @@ for (const [id, m] of Object.entries(src.monsters)) {
   monsters.push({ id, name: m.name, large: !id.startsWith("ems"), hp: m.hp, tables });
 }
 
-const emNum = id => parseInt(id.match(/\d+/)[0], 10);
-monsters.sort((a, b) => a.large === b.large ? emNum(a.id) - emNum(b.id) : a.large ? -1 : 1);
+// Large first, then by em number so each monster's variants (Rajang ->
+// Furious Rajang) sit together, then by variant suffix.
+const key = id => id.match(/\d+/g).map(Number);
+monsters.sort((a, b) => {
+  if (a.large !== b.large) return a.large ? -1 : 1;
+  const [an, av] = key(a.id), [bn, bv] = key(b.id);
+  return an - bn || av - bv;
+});
 
 // Icon audit: warn about monsters whose icon is missing from the copied set,
 // so a rename or a new monster never fails silently to the question mark.
