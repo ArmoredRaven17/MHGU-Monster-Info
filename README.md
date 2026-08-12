@@ -81,12 +81,21 @@ only when both of these hold:
 2. Kiranico's independent part list **agrees name-for-name** with MHGUDB.
 
 That yields 43 monsters. The two sources genuinely disagree on 20 others —
-for Duramboros, MHGUDB calls slot 0 "Head" and Kiranico calls it "Horn"; for
-Fatalis the two lists are offset by a whole position; Ukanlos, Volvidon,
-Lavasioth, Amatsu, Zamtrios, Deviljho and Lagiacrus have similar ordering
-conflicts. Those monsters show "Part N" rather than pick a side. The full
-conflict list, with the specific slots, is recorded in
+for Duramboros, MHGUDB calls slot 0 "Head" and Kiranico calls it "Horn";
+Ukanlos, Volvidon, Lavasioth, Amatsu, Zamtrios, Deviljho and Lagiacrus have
+similar ordering conflicts. Those monsters show "Part N" rather than pick a
+side. The full conflict list, with the specific slots, is recorded in
 [data-src/db/verified-part-names.json](data-src/db/verified-part-names.json).
+
+The Fatalis family's disagreement is the most tangled and worth calling out:
+base and Crimson/Old Fatalis have one 8-slot torso table with no break or
+enraged variant, and MHGUDB and Kiranico simply draw the Head/Neck/Belly/
+Back/Chest boundaries differently across it — they agree exactly at slot 4
+("Tail") and diverge on both sides of it, so it isn't a shifted or offset
+list, just two independent, inconsistent-with-each-other judgment calls on
+ambiguous torso regions. Separately, MHGUDB's own *Crimson* Fatalis entry is
+missing "Back (Enraged)" outright from its 15-part list (it jumps from Tail
+straight to Front Legs) — a gap in that source, not a labeling disagreement.
 
 Note that a value-based match (assign a name to any row whose numbers match a
 named DB part) would name 88% of parts, but cross-checking showed it produces
