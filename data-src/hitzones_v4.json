@@ -1,9 +1,9 @@
 {
  "_meta": {
-  "description": "MHGU monster hit zones — all parallel tables (normal / enraged / broken), decoded from base-game RomFS.",
+  "description": "MHGU monster hit zones — all parallel tables (normal / enraged / broken), decoded from base-game RomFS. v4: fixed table-region parsing (see build_v4.mjs header).",
   "source": "nativeNX/arc/enemy/em###_00.arc -> dt_tune/..._dttune (MT Framework, magic DTT\\0)",
-  "fields": "per part: slot (index), cut, impact, shot, fire, water, ice, thunder, dragon, stun, exhaust (0-100 %). game order = ice before thunder.",
-  "tables": "each entry in \"tables\" is one parallel hit-zone table (e.g. normal, enraged, broken). semantic labels are NOT assigned — verify against Kiranico. siege break tables are sparse (only breakable slots present).",
+  "fields": "per part: slot (index within its 8-slot block), cut, impact, shot, fire, water, ice, thunder, dragon, stun, exhaust. game order = ice before thunder. physicals reach 125, stun 200, exhaust 0/100-255.",
+  "tables": "std tables are parallel 8-slot blocks (normal / enraged / broken); placeholder slots (all-zero or all-100 rows) are omitted but slot numbers are kept. semantic labels are NOT assigned. siege break tables are sparse.",
   "part_names": "assigned ONLY when the base table byte-matches the collection-tracker DB in order; otherwise slot index only (no invented names).",
   "hp_offset": "u32 at file offset 0x38",
   "monster_count": 103
@@ -246,14 +246,15 @@
    "hp": 4500,
    "hp_matches_db": true,
    "format": "std",
-   "table_count": 1,
-   "part_names": "none (slot index only)",
+   "table_count": 2,
+   "part_names": "db (byte-validated)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
+       "name": "Head",
        "cut": 63,
        "impact": 70,
        "shot": 80,
@@ -267,6 +268,7 @@
       },
       {
        "slot": 1,
+       "name": "Neck",
        "cut": 75,
        "impact": 50,
        "shot": 50,
@@ -277,6 +279,93 @@
        "dragon": 5,
        "stun": 0,
        "exhaust": 100
+      },
+      {
+       "slot": 2,
+       "name": "Body",
+       "cut": 45,
+       "impact": 45,
+       "shot": 25,
+       "fire": 25,
+       "water": 5,
+       "ice": 5,
+       "thunder": 0,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 3,
+       "name": "Legs",
+       "cut": 25,
+       "impact": 20,
+       "shot": 35,
+       "fire": 15,
+       "water": 5,
+       "ice": 5,
+       "thunder": 0,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 4,
+       "name": "Tail",
+       "cut": 20,
+       "impact": 20,
+       "shot": 30,
+       "fire": 20,
+       "water": 5,
+       "ice": 5,
+       "thunder": 0,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 5,
+       "name": "Wings",
+       "cut": 25,
+       "impact": 25,
+       "shot": 25,
+       "fire": 20,
+       "water": 5,
+       "ice": 5,
+       "thunder": 0,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 200
+      }
+     ]
+    },
+    {
+     "index": 1,
+     "parts": [
+      {
+       "slot": 0,
+       "cut": 63,
+       "impact": 70,
+       "shot": 80,
+       "fire": 30,
+       "water": 5,
+       "ice": 5,
+       "thunder": 0,
+       "dragon": 5,
+       "stun": 150,
+       "exhaust": 255
+      },
+      {
+       "slot": 1,
+       "cut": 75,
+       "impact": 50,
+       "shot": 50,
+       "fire": 25,
+       "water": 5,
+       "ice": 5,
+       "thunder": 0,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 255
       },
       {
        "slot": 2,
@@ -316,6 +405,19 @@
        "dragon": 5,
        "stun": 0,
        "exhaust": 100
+      },
+      {
+       "slot": 5,
+       "cut": 25,
+       "impact": 25,
+       "shot": 25,
+       "fire": 20,
+       "water": 5,
+       "ice": 5,
+       "thunder": 0,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 200
       }
      ]
     }
@@ -2304,6 +2406,19 @@
        "dragon": 0,
        "stun": 0,
        "exhaust": 100
+      },
+      {
+       "slot": 7,
+       "cut": 0,
+       "impact": 0,
+       "shot": 50,
+       "fire": 60,
+       "water": 40,
+       "ice": 20,
+       "thunder": 10,
+       "dragon": 35,
+       "stun": 25,
+       "exhaust": 0
       }
      ]
     }
@@ -2316,7 +2431,7 @@
    "hp": 4000,
    "hp_matches_db": true,
    "format": "std",
-   "table_count": 3,
+   "table_count": 2,
    "part_names": "none (slot index only)",
    "tables": [
     {
@@ -2419,7 +2534,7 @@
      "index": 1,
      "parts": [
       {
-       "slot": 0,
+       "slot": 2,
        "cut": 20,
        "impact": 30,
        "shot": 15,
@@ -2430,14 +2545,9 @@
        "dragon": 0,
        "stun": 0,
        "exhaust": 100
-      }
-     ]
-    },
-    {
-     "index": 2,
-     "parts": [
+      },
       {
-       "slot": 0,
+       "slot": 6,
        "cut": 45,
        "impact": 50,
        "shot": 45,
@@ -2530,45 +2640,6 @@
        "dragon": 0,
        "stun": 0,
        "exhaust": 100
-      },
-      {
-       "slot": 5,
-       "cut": 0,
-       "impact": 0,
-       "shot": 0,
-       "fire": 0,
-       "water": 0,
-       "ice": 0,
-       "thunder": 0,
-       "dragon": 0,
-       "stun": 0,
-       "exhaust": 100
-      },
-      {
-       "slot": 6,
-       "cut": 0,
-       "impact": 0,
-       "shot": 0,
-       "fire": 0,
-       "water": 0,
-       "ice": 0,
-       "thunder": 0,
-       "dragon": 0,
-       "stun": 0,
-       "exhaust": 100
-      },
-      {
-       "slot": 7,
-       "cut": 0,
-       "impact": 0,
-       "shot": 0,
-       "fire": 0,
-       "water": 0,
-       "ice": 0,
-       "thunder": 0,
-       "dragon": 0,
-       "stun": 0,
-       "exhaust": 100
       }
      ]
     },
@@ -2636,45 +2707,6 @@
        "water": 5,
        "ice": 10,
        "thunder": 5,
-       "dragon": 0,
-       "stun": 0,
-       "exhaust": 100
-      },
-      {
-       "slot": 5,
-       "cut": 0,
-       "impact": 0,
-       "shot": 0,
-       "fire": 0,
-       "water": 0,
-       "ice": 0,
-       "thunder": 0,
-       "dragon": 0,
-       "stun": 0,
-       "exhaust": 100
-      },
-      {
-       "slot": 6,
-       "cut": 0,
-       "impact": 0,
-       "shot": 0,
-       "fire": 0,
-       "water": 0,
-       "ice": 0,
-       "thunder": 0,
-       "dragon": 0,
-       "stun": 0,
-       "exhaust": 100
-      },
-      {
-       "slot": 7,
-       "cut": 0,
-       "impact": 0,
-       "shot": 0,
-       "fire": 0,
-       "water": 0,
-       "ice": 0,
-       "thunder": 0,
        "dragon": 0,
        "stun": 0,
        "exhaust": 100
@@ -2777,7 +2809,7 @@
    "hp": 4500,
    "hp_matches_db": true,
    "format": "std",
-   "table_count": 1,
+   "table_count": 2,
    "part_names": "none (slot index only)",
    "tables": [
     {
@@ -2847,48 +2879,14 @@
        "dragon": 0,
        "stun": 0,
        "exhaust": 100
-      },
+      }
+     ]
+    },
+    {
+     "index": 1,
+     "parts": [
       {
-       "slot": 5,
-       "cut": 0,
-       "impact": 0,
-       "shot": 0,
-       "fire": 0,
-       "water": 0,
-       "ice": 0,
-       "thunder": 0,
-       "dragon": 0,
-       "stun": 0,
-       "exhaust": 100
-      },
-      {
-       "slot": 6,
-       "cut": 0,
-       "impact": 0,
-       "shot": 0,
-       "fire": 0,
-       "water": 0,
-       "ice": 0,
-       "thunder": 0,
-       "dragon": 0,
-       "stun": 0,
-       "exhaust": 100
-      },
-      {
-       "slot": 7,
-       "cut": 0,
-       "impact": 0,
-       "shot": 0,
-       "fire": 0,
-       "water": 0,
-       "ice": 0,
-       "thunder": 0,
-       "dragon": 0,
-       "stun": 0,
-       "exhaust": 100
-      },
-      {
-       "slot": 8,
+       "slot": 0,
        "cut": 60,
        "impact": 60,
        "shot": 60,
@@ -2901,7 +2899,7 @@
        "exhaust": 100
       },
       {
-       "slot": 9,
+       "slot": 1,
        "cut": 10,
        "impact": 10,
        "shot": 10,
@@ -2914,7 +2912,7 @@
        "exhaust": 100
       },
       {
-       "slot": 10,
+       "slot": 2,
        "cut": 55,
        "impact": 48,
        "shot": 48,
@@ -2927,7 +2925,7 @@
        "exhaust": 100
       },
       {
-       "slot": 11,
+       "slot": 3,
        "cut": 45,
        "impact": 50,
        "shot": 45,
@@ -2940,52 +2938,13 @@
        "exhaust": 100
       },
       {
-       "slot": 12,
+       "slot": 4,
        "cut": 55,
        "impact": 45,
        "shot": 30,
        "fire": 0,
        "water": 5,
        "ice": 15,
-       "thunder": 0,
-       "dragon": 0,
-       "stun": 0,
-       "exhaust": 100
-      },
-      {
-       "slot": 13,
-       "cut": 0,
-       "impact": 0,
-       "shot": 0,
-       "fire": 0,
-       "water": 0,
-       "ice": 0,
-       "thunder": 0,
-       "dragon": 0,
-       "stun": 0,
-       "exhaust": 100
-      },
-      {
-       "slot": 14,
-       "cut": 0,
-       "impact": 0,
-       "shot": 0,
-       "fire": 0,
-       "water": 0,
-       "ice": 0,
-       "thunder": 0,
-       "dragon": 0,
-       "stun": 0,
-       "exhaust": 100
-      },
-      {
-       "slot": 15,
-       "cut": 0,
-       "impact": 0,
-       "shot": 0,
-       "fire": 0,
-       "water": 0,
-       "ice": 0,
        "thunder": 0,
        "dragon": 0,
        "stun": 0,
@@ -6026,11 +5985,128 @@
    "hp": 5800,
    "hp_matches_db": false,
    "format": "std",
-   "table_count": 1,
-   "part_names": "none (slot index only)",
+   "table_count": 2,
+   "part_names": "db (byte-validated)",
    "tables": [
     {
      "index": 0,
+     "parts": [
+      {
+       "slot": 0,
+       "name": "Head",
+       "cut": 43,
+       "impact": 24,
+       "shot": 35,
+       "fire": 10,
+       "water": 5,
+       "ice": 5,
+       "thunder": 15,
+       "dragon": 5,
+       "stun": 100,
+       "exhaust": 100
+      },
+      {
+       "slot": 1,
+       "name": "Horns",
+       "cut": 23,
+       "impact": 21,
+       "shot": 20,
+       "fire": 35,
+       "water": 10,
+       "ice": 20,
+       "thunder": 35,
+       "dragon": 0,
+       "stun": 150,
+       "exhaust": 100
+      },
+      {
+       "slot": 2,
+       "name": "Body",
+       "cut": 25,
+       "impact": 35,
+       "shot": 25,
+       "fire": 15,
+       "water": 5,
+       "ice": 15,
+       "thunder": 10,
+       "dragon": 10,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 3,
+       "name": "Humps",
+       "cut": 60,
+       "impact": 60,
+       "shot": 35,
+       "fire": 20,
+       "water": 5,
+       "ice": 15,
+       "thunder": 0,
+       "dragon": 10,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 4,
+       "name": "Front Legs",
+       "cut": 32,
+       "impact": 30,
+       "shot": 25,
+       "fire": 15,
+       "water": 0,
+       "ice": 10,
+       "thunder": 10,
+       "dragon": 10,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 5,
+       "name": "Back Legs",
+       "cut": 44,
+       "impact": 44,
+       "shot": 35,
+       "fire": 10,
+       "water": 0,
+       "ice": 10,
+       "thunder": 5,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 6,
+       "name": "Tail",
+       "cut": 32,
+       "impact": 40,
+       "shot": 50,
+       "fire": 10,
+       "water": 5,
+       "ice": 5,
+       "thunder": 5,
+       "dragon": 10,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 7,
+       "name": "Tail Tip",
+       "cut": 24,
+       "impact": 43,
+       "shot": 40,
+       "fire": 20,
+       "water": 5,
+       "ice": 15,
+       "thunder": 5,
+       "dragon": 20,
+       "stun": 0,
+       "exhaust": 100
+      }
+     ]
+    },
+    {
+     "index": 1,
      "parts": [
       {
        "slot": 0,
@@ -6073,16 +6149,16 @@
       },
       {
        "slot": 3,
-       "cut": 60,
-       "impact": 60,
-       "shot": 35,
-       "fire": 20,
-       "water": 5,
-       "ice": 15,
-       "thunder": 0,
-       "dragon": 10,
+       "cut": 70,
+       "impact": 70,
+       "shot": 60,
+       "fire": 30,
+       "water": 10,
+       "ice": 20,
+       "thunder": 5,
+       "dragon": 20,
        "stun": 0,
-       "exhaust": 100
+       "exhaust": 120
       },
       {
        "slot": 4,
@@ -6133,45 +6209,6 @@
        "ice": 15,
        "thunder": 5,
        "dragon": 20,
-       "stun": 0,
-       "exhaust": 100
-      },
-      {
-       "slot": 8,
-       "cut": 43,
-       "impact": 24,
-       "shot": 35,
-       "fire": 10,
-       "water": 5,
-       "ice": 5,
-       "thunder": 15,
-       "dragon": 5,
-       "stun": 100,
-       "exhaust": 100
-      },
-      {
-       "slot": 9,
-       "cut": 23,
-       "impact": 21,
-       "shot": 20,
-       "fire": 35,
-       "water": 10,
-       "ice": 20,
-       "thunder": 35,
-       "dragon": 0,
-       "stun": 150,
-       "exhaust": 100
-      },
-      {
-       "slot": 10,
-       "cut": 25,
-       "impact": 35,
-       "shot": 25,
-       "fire": 15,
-       "water": 5,
-       "ice": 15,
-       "thunder": 10,
-       "dragon": 10,
        "stun": 0,
        "exhaust": 100
       }
@@ -6646,7 +6683,7 @@
    "hp": 9400,
    "hp_matches_db": false,
    "format": "std",
-   "table_count": 1,
+   "table_count": 2,
    "part_names": "none (slot index only)",
    "tables": [
     {
@@ -6657,6 +6694,102 @@
        "cut": 60,
        "impact": 70,
        "shot": 65,
+       "fire": 20,
+       "water": 0,
+       "ice": 10,
+       "thunder": 15,
+       "dragon": 25,
+       "stun": 100,
+       "exhaust": 100
+      },
+      {
+       "slot": 1,
+       "cut": 35,
+       "impact": 30,
+       "shot": 15,
+       "fire": 15,
+       "water": 0,
+       "ice": 5,
+       "thunder": 0,
+       "dragon": 10,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 2,
+       "cut": 30,
+       "impact": 25,
+       "shot": 15,
+       "fire": 15,
+       "water": 0,
+       "ice": 5,
+       "thunder": 0,
+       "dragon": 10,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 3,
+       "cut": 40,
+       "impact": 40,
+       "shot": 35,
+       "fire": 20,
+       "water": 0,
+       "ice": 5,
+       "thunder": 10,
+       "dragon": 20,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 4,
+       "cut": 25,
+       "impact": 30,
+       "shot": 10,
+       "fire": 15,
+       "water": 0,
+       "ice": 5,
+       "thunder": 0,
+       "dragon": 20,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 5,
+       "cut": 44,
+       "impact": 44,
+       "shot": 30,
+       "fire": 20,
+       "water": 0,
+       "ice": 5,
+       "thunder": 10,
+       "dragon": 20,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 6,
+       "cut": 35,
+       "impact": 30,
+       "shot": 15,
+       "fire": 20,
+       "water": 0,
+       "ice": 5,
+       "thunder": 0,
+       "dragon": 10,
+       "stun": 0,
+       "exhaust": 100
+      }
+     ]
+    },
+    {
+     "index": 1,
+     "parts": [
+      {
+       "slot": 0,
+       "cut": 70,
+       "impact": 80,
+       "shot": 75,
        "fire": 20,
        "water": 0,
        "ice": 10,
@@ -6999,13 +7132,14 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "none (slot index only)",
+   "part_names": "db (byte-validated)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
+       "name": "Head",
        "cut": 55,
        "impact": 50,
        "shot": 45,
@@ -7019,6 +7153,7 @@
       },
       {
        "slot": 1,
+       "name": "Upper Body",
        "cut": 45,
        "impact": 45,
        "shot": 35,
@@ -7032,6 +7167,7 @@
       },
       {
        "slot": 2,
+       "name": "Back",
        "cut": 38,
        "impact": 30,
        "shot": 30,
@@ -7045,6 +7181,7 @@
       },
       {
        "slot": 3,
+       "name": "Front Legs",
        "cut": 30,
        "impact": 30,
        "shot": 25,
@@ -7058,6 +7195,7 @@
       },
       {
        "slot": 4,
+       "name": "Rear",
        "cut": 36,
        "impact": 36,
        "shot": 20,
@@ -7065,6 +7203,34 @@
        "water": 10,
        "ice": 10,
        "thunder": 5,
+       "dragon": 0,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 5,
+       "name": "Rolling",
+       "cut": 75,
+       "impact": 75,
+       "shot": 10,
+       "fire": 0,
+       "water": 0,
+       "ice": 0,
+       "thunder": 0,
+       "dragon": 0,
+       "stun": 0,
+       "exhaust": 0
+      },
+      {
+       "slot": 6,
+       "name": "Belly + Hind Legs",
+       "cut": 45,
+       "impact": 45,
+       "shot": 40,
+       "fire": 0,
+       "water": 20,
+       "ice": 15,
+       "thunder": 10,
        "dragon": 0,
        "stun": 0,
        "exhaust": 100
@@ -7372,7 +7538,7 @@
    "hp": 4000,
    "hp_matches_db": true,
    "format": "std",
-   "table_count": 1,
+   "table_count": 2,
    "part_names": "none (slot index only)",
    "tables": [
     {
@@ -7455,6 +7621,115 @@
        "dragon": 5,
        "stun": 0,
        "exhaust": 100
+      },
+      {
+       "slot": 7,
+       "cut": 20,
+       "impact": 20,
+       "shot": 15,
+       "fire": 0,
+       "water": 0,
+       "ice": 0,
+       "thunder": 0,
+       "dragon": 10,
+       "stun": 0,
+       "exhaust": 100
+      }
+     ]
+    },
+    {
+     "index": 1,
+     "parts": [
+      {
+       "slot": 0,
+       "cut": 56,
+       "impact": 56,
+       "shot": 60,
+       "fire": 0,
+       "water": 30,
+       "ice": 5,
+       "thunder": 25,
+       "dragon": 5,
+       "stun": 100,
+       "exhaust": 100
+      },
+      {
+       "slot": 1,
+       "cut": 42,
+       "impact": 45,
+       "shot": 40,
+       "fire": 0,
+       "water": 25,
+       "ice": 10,
+       "thunder": 25,
+       "dragon": 5,
+       "stun": 100,
+       "exhaust": 100
+      },
+      {
+       "slot": 2,
+       "cut": 25,
+       "impact": 25,
+       "shot": 25,
+       "fire": 0,
+       "water": 20,
+       "ice": 5,
+       "thunder": 15,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 3,
+       "cut": 45,
+       "impact": 42,
+       "shot": 40,
+       "fire": 0,
+       "water": 20,
+       "ice": 5,
+       "thunder": 15,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 4,
+       "cut": 42,
+       "impact": 42,
+       "shot": 40,
+       "fire": 0,
+       "water": 15,
+       "ice": 10,
+       "thunder": 15,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 5,
+       "cut": 80,
+       "impact": 80,
+       "shot": 85,
+       "fire": 0,
+       "water": 30,
+       "ice": 15,
+       "thunder": 30,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 7,
+       "cut": 20,
+       "impact": 20,
+       "shot": 15,
+       "fire": 0,
+       "water": 0,
+       "ice": 0,
+       "thunder": 0,
+       "dragon": 10,
+       "stun": 0,
+       "exhaust": 100
       }
      ]
     }
@@ -7467,7 +7742,7 @@
    "hp": 5200,
    "hp_matches_db": true,
    "format": "std",
-   "table_count": 1,
+   "table_count": 2,
    "part_names": "none (slot index only)",
    "tables": [
     {
@@ -7498,6 +7773,193 @@
        "dragon": 5,
        "stun": 0,
        "exhaust": 100
+      },
+      {
+       "slot": 2,
+       "cut": 45,
+       "impact": 45,
+       "shot": 40,
+       "fire": 15,
+       "water": 0,
+       "ice": 0,
+       "thunder": 15,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 200
+      },
+      {
+       "slot": 3,
+       "cut": 42,
+       "impact": 42,
+       "shot": 40,
+       "fire": 10,
+       "water": 0,
+       "ice": 0,
+       "thunder": 15,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 4,
+       "cut": 42,
+       "impact": 42,
+       "shot": 40,
+       "fire": 10,
+       "water": 0,
+       "ice": 0,
+       "thunder": 15,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 5,
+       "cut": 36,
+       "impact": 36,
+       "shot": 35,
+       "fire": 10,
+       "water": 0,
+       "ice": 0,
+       "thunder": 15,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 6,
+       "cut": 45,
+       "impact": 43,
+       "shot": 40,
+       "fire": 10,
+       "water": 0,
+       "ice": 0,
+       "thunder": 15,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 7,
+       "cut": 75,
+       "impact": 66,
+       "shot": 60,
+       "fire": 30,
+       "water": 0,
+       "ice": 0,
+       "thunder": 30,
+       "dragon": 10,
+       "stun": 0,
+       "exhaust": 200
+      }
+     ]
+    },
+    {
+     "index": 1,
+     "parts": [
+      {
+       "slot": 0,
+       "cut": 24,
+       "impact": 24,
+       "shot": 20,
+       "fire": 20,
+       "water": 0,
+       "ice": 0,
+       "thunder": 20,
+       "dragon": 5,
+       "stun": 100,
+       "exhaust": 100
+      },
+      {
+       "slot": 1,
+       "cut": 33,
+       "impact": 33,
+       "shot": 28,
+       "fire": 15,
+       "water": 0,
+       "ice": 0,
+       "thunder": 15,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 2,
+       "cut": 42,
+       "impact": 42,
+       "shot": 40,
+       "fire": 20,
+       "water": 0,
+       "ice": 0,
+       "thunder": 15,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 200
+      },
+      {
+       "slot": 3,
+       "cut": 20,
+       "impact": 21,
+       "shot": 20,
+       "fire": 20,
+       "water": 0,
+       "ice": 0,
+       "thunder": 15,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 4,
+       "cut": 20,
+       "impact": 21,
+       "shot": 20,
+       "fire": 20,
+       "water": 0,
+       "ice": 0,
+       "thunder": 15,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 5,
+       "cut": 33,
+       "impact": 33,
+       "shot": 30,
+       "fire": 15,
+       "water": 0,
+       "ice": 0,
+       "thunder": 15,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 6,
+       "cut": 24,
+       "impact": 24,
+       "shot": 25,
+       "fire": 20,
+       "water": 0,
+       "ice": 0,
+       "thunder": 10,
+       "dragon": 5,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 7,
+       "cut": 75,
+       "impact": 66,
+       "shot": 60,
+       "fire": 30,
+       "water": 0,
+       "ice": 0,
+       "thunder": 30,
+       "dragon": 10,
+       "stun": 0,
+       "exhaust": 200
       }
      ]
     }
@@ -7952,7 +8414,7 @@
    "hp": 3900,
    "hp_matches_db": true,
    "format": "std",
-   "table_count": 1,
+   "table_count": 2,
    "part_names": "none (slot index only)",
    "tables": [
     {
@@ -7960,6 +8422,115 @@
      "parts": [
       {
        "slot": 0,
+       "cut": 50,
+       "impact": 65,
+       "shot": 50,
+       "fire": 15,
+       "water": 0,
+       "ice": 5,
+       "thunder": 0,
+       "dragon": 0,
+       "stun": 100,
+       "exhaust": 150
+      },
+      {
+       "slot": 1,
+       "cut": 28,
+       "impact": 35,
+       "shot": 65,
+       "fire": 25,
+       "water": 0,
+       "ice": 5,
+       "thunder": 0,
+       "dragon": 0,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 2,
+       "cut": 36,
+       "impact": 36,
+       "shot": 40,
+       "fire": 25,
+       "water": 0,
+       "ice": 5,
+       "thunder": 0,
+       "dragon": 0,
+       "stun": 0,
+       "exhaust": 120
+      },
+      {
+       "slot": 3,
+       "cut": 60,
+       "impact": 45,
+       "shot": 45,
+       "fire": 15,
+       "water": 0,
+       "ice": 5,
+       "thunder": 20,
+       "dragon": 0,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 4,
+       "cut": 20,
+       "impact": 30,
+       "shot": 20,
+       "fire": 5,
+       "water": 0,
+       "ice": 0,
+       "thunder": 10,
+       "dragon": 0,
+       "stun": 0,
+       "exhaust": 200
+      },
+      {
+       "slot": 5,
+       "cut": 35,
+       "impact": 30,
+       "shot": 25,
+       "fire": 20,
+       "water": 0,
+       "ice": 5,
+       "thunder": 0,
+       "dragon": 0,
+       "stun": 0,
+       "exhaust": 120
+      },
+      {
+       "slot": 6,
+       "cut": 28,
+       "impact": 30,
+       "shot": 20,
+       "fire": 10,
+       "water": 0,
+       "ice": 0,
+       "thunder": 0,
+       "dragon": 0,
+       "stun": 0,
+       "exhaust": 120
+      }
+     ]
+    },
+    {
+     "index": 1,
+     "parts": [
+      {
+       "slot": 0,
+       "cut": 50,
+       "impact": 65,
+       "shot": 50,
+       "fire": 5,
+       "water": 0,
+       "ice": 5,
+       "thunder": 10,
+       "dragon": 0,
+       "stun": 100,
+       "exhaust": 130
+      },
+      {
+       "slot": 1,
        "cut": 28,
        "impact": 42,
        "shot": 35,
@@ -7972,7 +8543,7 @@
        "exhaust": 100
       },
       {
-       "slot": 1,
+       "slot": 2,
        "cut": 36,
        "impact": 36,
        "shot": 40,
@@ -7985,7 +8556,7 @@
        "exhaust": 100
       },
       {
-       "slot": 2,
+       "slot": 3,
        "cut": 60,
        "impact": 45,
        "shot": 45,
@@ -7996,6 +8567,45 @@
        "dragon": 0,
        "stun": 0,
        "exhaust": 100
+      },
+      {
+       "slot": 4,
+       "cut": 20,
+       "impact": 30,
+       "shot": 20,
+       "fire": 5,
+       "water": 0,
+       "ice": 0,
+       "thunder": 10,
+       "dragon": 0,
+       "stun": 0,
+       "exhaust": 200
+      },
+      {
+       "slot": 5,
+       "cut": 35,
+       "impact": 30,
+       "shot": 25,
+       "fire": 5,
+       "water": 0,
+       "ice": 5,
+       "thunder": 15,
+       "dragon": 0,
+       "stun": 0,
+       "exhaust": 120
+      },
+      {
+       "slot": 6,
+       "cut": 28,
+       "impact": 30,
+       "shot": 20,
+       "fire": 5,
+       "water": 0,
+       "ice": 0,
+       "thunder": 5,
+       "dragon": 0,
+       "stun": 0,
+       "exhaust": 120
       }
      ]
     }
@@ -10246,7 +10856,6 @@
   "em087_00": {
    "name": null,
    "hp": 11000,
-   "format": "std",
    "error": "non-standard-format"
   },
   "em088_00": {
@@ -10256,14 +10865,15 @@
    "hp": 4900,
    "hp_matches_db": true,
    "format": "std",
-   "table_count": 2,
-   "part_names": "none (slot index only)",
+   "table_count": 1,
+   "part_names": "db (byte-validated)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
+       "name": "Head",
        "cut": 70,
        "impact": 70,
        "shot": 50,
@@ -10277,6 +10887,7 @@
       },
       {
        "slot": 1,
+       "name": "Claws",
        "cut": 55,
        "impact": 55,
        "shot": 20,
@@ -10290,6 +10901,7 @@
       },
       {
        "slot": 2,
+       "name": "Arms",
        "cut": 55,
        "impact": 55,
        "shot": 20,
@@ -10300,14 +10912,10 @@
        "dragon": 0,
        "stun": 0,
        "exhaust": 100
-      }
-     ]
-    },
-    {
-     "index": 1,
-     "parts": [
+      },
       {
-       "slot": 0,
+       "slot": 3,
+       "name": "Back",
        "cut": 38,
        "impact": 38,
        "shot": 35,
@@ -10320,7 +10928,8 @@
        "exhaust": 100
       },
       {
-       "slot": 1,
+       "slot": 4,
+       "name": "Body",
        "cut": 25,
        "impact": 25,
        "shot": 20,
@@ -10333,7 +10942,8 @@
        "exhaust": 100
       },
       {
-       "slot": 2,
+       "slot": 5,
+       "name": "Legs",
        "cut": 45,
        "impact": 45,
        "shot": 20,
@@ -10341,6 +10951,20 @@
        "water": 5,
        "ice": 0,
        "thunder": 10,
+       "dragon": 0,
+       "stun": 0,
+       "exhaust": 100
+      },
+      {
+       "slot": 7,
+       "name": "Tail",
+       "cut": 20,
+       "impact": 20,
+       "shot": 45,
+       "fire": 0,
+       "water": 15,
+       "ice": 5,
+       "thunder": 20,
        "dragon": 0,
        "stun": 0,
        "exhaust": 100
@@ -11485,7 +12109,7 @@
    "hp": 100,
    "hp_matches_db": false,
    "format": "std",
-   "table_count": 1,
+   "table_count": 2,
    "part_names": "none (slot index only)",
    "tables": [
     {
@@ -11502,6 +12126,24 @@
        "thunder": 10,
        "dragon": 10,
        "stun": 10,
+       "exhaust": 100
+      }
+     ]
+    },
+    {
+     "index": 1,
+     "parts": [
+      {
+       "slot": 0,
+       "cut": 80,
+       "impact": 80,
+       "shot": 50,
+       "fire": 50,
+       "water": 50,
+       "ice": 50,
+       "thunder": 50,
+       "dragon": 50,
+       "stun": 100,
        "exhaust": 100
       }
      ]
