@@ -17,7 +17,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -592,7 +592,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -1167,7 +1167,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 2,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -1351,7 +1351,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 2,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -1819,7 +1819,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -1948,13 +1948,14 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 2,
-   "part_names": "none (slot index only)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
+       "name": "Horn",
        "cut": 20,
        "impact": 15,
        "shot": 20,
@@ -1968,6 +1969,7 @@
       },
       {
        "slot": 1,
+       "name": "Head",
        "cut": 45,
        "impact": 15,
        "shot": 30,
@@ -1981,6 +1983,7 @@
       },
       {
        "slot": 2,
+       "name": "Back",
        "cut": 23,
        "impact": 42,
        "shot": 20,
@@ -1994,6 +1997,7 @@
       },
       {
        "slot": 3,
+       "name": "Belly",
        "cut": 42,
        "impact": 42,
        "shot": 35,
@@ -2007,6 +2011,7 @@
       },
       {
        "slot": 4,
+       "name": "Wing Flaps",
        "cut": 35,
        "impact": 30,
        "shot": 40,
@@ -2020,6 +2025,7 @@
       },
       {
        "slot": 5,
+       "name": "Legs",
        "cut": 30,
        "impact": 35,
        "shot": 35,
@@ -2033,6 +2039,7 @@
       },
       {
        "slot": 6,
+       "name": "Tail",
        "cut": 55,
        "impact": 24,
        "shot": 50,
@@ -2046,6 +2053,7 @@
       },
       {
        "slot": 7,
+       "name": "Tail Tip",
        "cut": 22,
        "impact": 35,
        "shot": 10,
@@ -2178,7 +2186,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -2293,7 +2301,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 2,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -2504,7 +2512,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -2619,13 +2627,14 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 2,
-   "part_names": "none (slot index only)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
+       "name": "Head",
        "cut": 50,
        "impact": 50,
        "shot": 45,
@@ -2639,6 +2648,7 @@
       },
       {
        "slot": 1,
+       "name": "Body",
        "cut": 24,
        "impact": 24,
        "shot": 20,
@@ -2652,6 +2662,7 @@
       },
       {
        "slot": 2,
+       "name": "Lower Body",
        "cut": 15,
        "impact": 15,
        "shot": 15,
@@ -2665,6 +2676,7 @@
       },
       {
        "slot": 3,
+       "name": "Front Legs",
        "cut": 28,
        "impact": 28,
        "shot": 32,
@@ -2884,14 +2896,13 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "none (slot index only)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
-       "name": "Head",
        "cut": 70,
        "impact": 75,
        "shot": 65,
@@ -2905,7 +2916,6 @@
       },
       {
        "slot": 1,
-       "name": "Neck",
        "cut": 50,
        "impact": 50,
        "shot": 40,
@@ -2919,7 +2929,6 @@
       },
       {
        "slot": 2,
-       "name": "Belly",
        "cut": 45,
        "impact": 40,
        "shot": 25,
@@ -2933,7 +2942,6 @@
       },
       {
        "slot": 3,
-       "name": "Back",
        "cut": 30,
        "impact": 25,
        "shot": 20,
@@ -2947,7 +2955,6 @@
       },
       {
        "slot": 4,
-       "name": "Tail",
        "cut": 10,
        "impact": 15,
        "shot": 10,
@@ -2961,7 +2968,6 @@
       },
       {
        "slot": 5,
-       "name": "Front Legs",
        "cut": 30,
        "impact": 30,
        "shot": 25,
@@ -2975,7 +2981,6 @@
       },
       {
        "slot": 6,
-       "name": "Back Legs",
        "cut": 21,
        "impact": 21,
        "shot": 20,
@@ -2989,7 +2994,6 @@
       },
       {
        "slot": 7,
-       "name": "Wings",
        "cut": 35,
        "impact": 21,
        "shot": 15,
@@ -3473,7 +3477,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -3518,7 +3522,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -3563,7 +3567,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -3608,7 +3612,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -3723,7 +3727,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -3838,7 +3842,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 2,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -4253,7 +4257,7 @@
    "hp_matches_db": false,
    "format": "std",
    "table_count": 2,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -4591,13 +4595,14 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 2,
-   "part_names": "none (slot index only)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
+       "name": "Head",
        "cut": 50,
        "impact": 45,
        "shot": 45,
@@ -4611,6 +4616,7 @@
       },
       {
        "slot": 1,
+       "name": "Body",
        "cut": 35,
        "impact": 35,
        "shot": 25,
@@ -4624,6 +4630,7 @@
       },
       {
        "slot": 2,
+       "name": "Shell",
        "cut": 20,
        "impact": 30,
        "shot": 15,
@@ -4637,6 +4644,7 @@
       },
       {
        "slot": 3,
+       "name": "Front Legs",
        "cut": 25,
        "impact": 25,
        "shot": 25,
@@ -4650,6 +4658,7 @@
       },
       {
        "slot": 4,
+       "name": "Claws",
        "cut": 20,
        "impact": 20,
        "shot": 10,
@@ -4663,6 +4672,7 @@
       },
       {
        "slot": 5,
+       "name": "Arms",
        "cut": 25,
        "impact": 35,
        "shot": 25,
@@ -4676,6 +4686,7 @@
       },
       {
        "slot": 6,
+       "name": "Shell Flesh",
        "cut": 35,
        "impact": 40,
        "shot": 30,
@@ -4689,6 +4700,7 @@
       },
       {
        "slot": 7,
+       "name": "Back Legs",
        "cut": 35,
        "impact": 30,
        "shot": 35,
@@ -4934,14 +4946,13 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "none (slot index only)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
-       "name": "Head",
        "cut": 60,
        "impact": 60,
        "shot": 60,
@@ -4955,7 +4966,6 @@
       },
       {
        "slot": 1,
-       "name": "Arms",
        "cut": 45,
        "impact": 40,
        "shot": 30,
@@ -4969,7 +4979,6 @@
       },
       {
        "slot": 2,
-       "name": "Legs",
        "cut": 45,
        "impact": 40,
        "shot": 30,
@@ -4983,7 +4992,6 @@
       },
       {
        "slot": 3,
-       "name": "Body",
        "cut": 45,
        "impact": 50,
        "shot": 40,
@@ -4997,7 +5005,6 @@
       },
       {
        "slot": 4,
-       "name": "Tail",
        "cut": 50,
        "impact": 40,
        "shot": 25,
@@ -5021,13 +5028,14 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 2,
-   "part_names": "none (slot index only)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
+       "name": "Head",
        "cut": 60,
        "impact": 60,
        "shot": 60,
@@ -5041,6 +5049,7 @@
       },
       {
        "slot": 1,
+       "name": "Front Legs",
        "cut": 45,
        "impact": 40,
        "shot": 40,
@@ -5054,6 +5063,7 @@
       },
       {
        "slot": 2,
+       "name": "Back Legs",
        "cut": 45,
        "impact": 40,
        "shot": 40,
@@ -5067,6 +5077,7 @@
       },
       {
        "slot": 3,
+       "name": "Body",
        "cut": 45,
        "impact": 50,
        "shot": 45,
@@ -5080,6 +5091,7 @@
       },
       {
        "slot": 4,
+       "name": "Tail",
        "cut": 50,
        "impact": 40,
        "shot": 30,
@@ -5173,13 +5185,14 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 2,
-   "part_names": "none (slot index only)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
+       "name": "Head",
        "cut": 60,
        "impact": 60,
        "shot": 60,
@@ -5193,6 +5206,7 @@
       },
       {
        "slot": 1,
+       "name": "Front Legs",
        "cut": 45,
        "impact": 40,
        "shot": 40,
@@ -5206,6 +5220,7 @@
       },
       {
        "slot": 2,
+       "name": "Back Legs",
        "cut": 45,
        "impact": 40,
        "shot": 40,
@@ -5219,6 +5234,7 @@
       },
       {
        "slot": 3,
+       "name": "Body",
        "cut": 45,
        "impact": 50,
        "shot": 45,
@@ -5232,6 +5248,7 @@
       },
       {
        "slot": 4,
+       "name": "Tail",
        "cut": 50,
        "impact": 40,
        "shot": 30,
@@ -5759,13 +5776,14 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 2,
-   "part_names": "none (slot index only)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
+       "name": "Head",
        "cut": 50,
        "impact": 50,
        "shot": 45,
@@ -5779,6 +5797,7 @@
       },
       {
        "slot": 1,
+       "name": "Belly",
        "cut": 25,
        "impact": 40,
        "shot": 20,
@@ -5792,6 +5811,7 @@
       },
       {
        "slot": 2,
+       "name": "Back",
        "cut": 25,
        "impact": 25,
        "shot": 25,
@@ -5805,6 +5825,7 @@
       },
       {
        "slot": 3,
+       "name": "Tail",
        "cut": 45,
        "impact": 25,
        "shot": 60,
@@ -5818,6 +5839,7 @@
       },
       {
        "slot": 4,
+       "name": "Front Legs",
        "cut": 25,
        "impact": 25,
        "shot": 20,
@@ -5831,6 +5853,7 @@
       },
       {
        "slot": 5,
+       "name": "Back Legs",
        "cut": 45,
        "impact": 45,
        "shot": 30,
@@ -5844,6 +5867,7 @@
       },
       {
        "slot": 6,
+       "name": "Wings",
        "cut": 20,
        "impact": 20,
        "shot": 10,
@@ -5963,7 +5987,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -6008,13 +6032,14 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 2,
-   "part_names": "none (slot index only)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
+       "name": "Head",
        "cut": 65,
        "impact": 55,
        "shot": 55,
@@ -6028,6 +6053,7 @@
       },
       {
        "slot": 1,
+       "name": "Neck",
        "cut": 44,
        "impact": 44,
        "shot": 25,
@@ -6041,6 +6067,7 @@
       },
       {
        "slot": 2,
+       "name": "Belly",
        "cut": 25,
        "impact": 30,
        "shot": 20,
@@ -6054,6 +6081,7 @@
       },
       {
        "slot": 3,
+       "name": "Back",
        "cut": 44,
        "impact": 40,
        "shot": 30,
@@ -6067,6 +6095,7 @@
       },
       {
        "slot": 4,
+       "name": "Tail",
        "cut": 35,
        "impact": 30,
        "shot": 20,
@@ -6080,6 +6109,7 @@
       },
       {
        "slot": 5,
+       "name": "Front Legs",
        "cut": 25,
        "impact": 25,
        "shot": 25,
@@ -6093,6 +6123,7 @@
       },
       {
        "slot": 6,
+       "name": "Back Legs",
        "cut": 40,
        "impact": 40,
        "shot": 40,
@@ -6212,13 +6243,14 @@
    "hp_matches_db": false,
    "format": "std",
    "table_count": 2,
-   "part_names": "none (slot index only)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
+       "name": "Head",
        "cut": 65,
        "impact": 55,
        "shot": 55,
@@ -6232,6 +6264,7 @@
       },
       {
        "slot": 1,
+       "name": "Neck",
        "cut": 44,
        "impact": 44,
        "shot": 25,
@@ -6245,6 +6278,7 @@
       },
       {
        "slot": 2,
+       "name": "Belly",
        "cut": 25,
        "impact": 30,
        "shot": 20,
@@ -6258,6 +6292,7 @@
       },
       {
        "slot": 3,
+       "name": "Back",
        "cut": 17,
        "impact": 17,
        "shot": 10,
@@ -6271,6 +6306,7 @@
       },
       {
        "slot": 4,
+       "name": "Tail",
        "cut": 35,
        "impact": 30,
        "shot": 20,
@@ -6284,6 +6320,7 @@
       },
       {
        "slot": 5,
+       "name": "Front Legs",
        "cut": 25,
        "impact": 25,
        "shot": 20,
@@ -6297,6 +6334,7 @@
       },
       {
        "slot": 6,
+       "name": "Back Legs",
        "cut": 40,
        "impact": 40,
        "shot": 40,
@@ -6310,6 +6348,7 @@
       },
       {
        "slot": 7,
+       "name": "Claw",
        "cut": 17,
        "impact": 17,
        "shot": 10,
@@ -6442,13 +6481,14 @@
    "hp_matches_db": false,
    "format": "std",
    "table_count": 2,
-   "part_names": "none (slot index only)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
+       "name": "Head",
        "cut": 50,
        "impact": 50,
        "shot": 60,
@@ -6462,6 +6502,7 @@
       },
       {
        "slot": 1,
+       "name": "Neck",
        "cut": 35,
        "impact": 30,
        "shot": 20,
@@ -6475,6 +6516,7 @@
       },
       {
        "slot": 2,
+       "name": "Belly",
        "cut": 35,
        "impact": 40,
        "shot": 25,
@@ -6488,6 +6530,7 @@
       },
       {
        "slot": 3,
+       "name": "Back",
        "cut": 20,
        "impact": 25,
        "shot": 25,
@@ -6501,6 +6544,7 @@
       },
       {
        "slot": 4,
+       "name": "Tail",
        "cut": 30,
        "impact": 25,
        "shot": 30,
@@ -6514,6 +6558,7 @@
       },
       {
        "slot": 5,
+       "name": "Front Legs",
        "cut": 25,
        "impact": 35,
        "shot": 15,
@@ -6527,6 +6572,7 @@
       },
       {
        "slot": 6,
+       "name": "Back Legs",
        "cut": 30,
        "impact": 30,
        "shot": 15,
@@ -6646,7 +6692,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -6691,14 +6737,13 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "none (slot index only)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
-       "name": "Head",
        "cut": 63,
        "impact": 63,
        "shot": 45,
@@ -6712,7 +6757,6 @@
       },
       {
        "slot": 1,
-       "name": "Neck",
        "cut": 43,
        "impact": 43,
        "shot": 35,
@@ -6726,7 +6770,6 @@
       },
       {
        "slot": 2,
-       "name": "Wings",
        "cut": 35,
        "impact": 35,
        "shot": 20,
@@ -6740,7 +6783,6 @@
       },
       {
        "slot": 3,
-       "name": "Back",
        "cut": 25,
        "impact": 25,
        "shot": 15,
@@ -6754,7 +6796,6 @@
       },
       {
        "slot": 4,
-       "name": "Tail",
        "cut": 35,
        "impact": 35,
        "shot": 25,
@@ -6768,7 +6809,6 @@
       },
       {
        "slot": 5,
-       "name": "Belly",
        "cut": 55,
        "impact": 55,
        "shot": 40,
@@ -6782,7 +6822,6 @@
       },
       {
        "slot": 6,
-       "name": "Legs",
        "cut": 25,
        "impact": 25,
        "shot": 10,
@@ -6806,13 +6845,14 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 2,
-   "part_names": "none (slot index only)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
+       "name": "Head",
        "cut": 50,
        "impact": 50,
        "shot": 55,
@@ -6826,6 +6866,7 @@
       },
       {
        "slot": 1,
+       "name": "Neck + Back",
        "cut": 36,
        "impact": 40,
        "shot": 30,
@@ -6839,6 +6880,7 @@
       },
       {
        "slot": 2,
+       "name": "Belly",
        "cut": 25,
        "impact": 25,
        "shot": 30,
@@ -6852,6 +6894,7 @@
       },
       {
        "slot": 3,
+       "name": "Wing Blades",
        "cut": 20,
        "impact": 20,
        "shot": 20,
@@ -6865,6 +6908,7 @@
       },
       {
        "slot": 4,
+       "name": "Front Legs",
        "cut": 36,
        "impact": 36,
        "shot": 25,
@@ -6878,6 +6922,7 @@
       },
       {
        "slot": 5,
+       "name": "Back Legs",
        "cut": 30,
        "impact": 30,
        "shot": 25,
@@ -6891,6 +6936,7 @@
       },
       {
        "slot": 6,
+       "name": "Tail",
        "cut": 30,
        "impact": 30,
        "shot": 35,
@@ -6904,6 +6950,7 @@
       },
       {
        "slot": 7,
+       "name": "Tail Tip",
        "cut": 25,
        "impact": 25,
        "shot": 30,
@@ -7470,7 +7517,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -8579,14 +8626,13 @@
    "hp_matches_db": false,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "none (slot index only)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
-       "name": "Head",
        "cut": 45,
        "impact": 45,
        "shot": 45,
@@ -8600,7 +8646,6 @@
       },
       {
        "slot": 1,
-       "name": "Neck + Belly",
        "cut": 55,
        "impact": 45,
        "shot": 35,
@@ -8614,7 +8659,6 @@
       },
       {
        "slot": 2,
-       "name": "Back",
        "cut": 25,
        "impact": 25,
        "shot": 20,
@@ -8628,7 +8672,6 @@
       },
       {
        "slot": 3,
-       "name": "Body",
        "cut": 24,
        "impact": 40,
        "shot": 15,
@@ -8642,7 +8685,6 @@
       },
       {
        "slot": 4,
-       "name": "Front Legs",
        "cut": 25,
        "impact": 25,
        "shot": 10,
@@ -8656,7 +8698,6 @@
       },
       {
        "slot": 5,
-       "name": "Tail",
        "cut": 25,
        "impact": 35,
        "shot": 15,
@@ -8670,7 +8711,6 @@
       },
       {
        "slot": 6,
-       "name": "Back Legs",
        "cut": 38,
        "impact": 38,
        "shot": 30,
@@ -8694,7 +8734,7 @@
    "hp_matches_db": false,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -9039,13 +9079,14 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 2,
-   "part_names": "none (slot index only)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
+       "name": "Head (Fire Form)",
        "cut": 60,
        "impact": 65,
        "shot": 55,
@@ -9059,6 +9100,7 @@
       },
       {
        "slot": 1,
+       "name": "Neck (Fire Form)",
        "cut": 40,
        "impact": 35,
        "shot": 35,
@@ -9072,6 +9114,7 @@
       },
       {
        "slot": 2,
+       "name": "Body (Fire Form)",
        "cut": 35,
        "impact": 30,
        "shot": 20,
@@ -9085,6 +9128,7 @@
       },
       {
        "slot": 3,
+       "name": "Wings (Fire Form)",
        "cut": 21,
        "impact": 21,
        "shot": 10,
@@ -9098,6 +9142,7 @@
       },
       {
        "slot": 4,
+       "name": "Legs (Fire Form)",
        "cut": 25,
        "impact": 25,
        "shot": 20,
@@ -9111,6 +9156,7 @@
       },
       {
        "slot": 5,
+       "name": "Tail (Fire Form)",
        "cut": 30,
        "impact": 25,
        "shot": 40,
@@ -9217,14 +9263,13 @@
    "hp_matches_db": false,
    "format": "std",
    "table_count": 2,
-   "part_names": "db (byte-validated)",
+   "part_names": "none (slot index only)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
-       "name": "Head",
        "cut": 43,
        "impact": 24,
        "shot": 35,
@@ -9238,7 +9283,6 @@
       },
       {
        "slot": 1,
-       "name": "Horns",
        "cut": 23,
        "impact": 21,
        "shot": 20,
@@ -9252,7 +9296,6 @@
       },
       {
        "slot": 2,
-       "name": "Body",
        "cut": 25,
        "impact": 35,
        "shot": 25,
@@ -9266,7 +9309,6 @@
       },
       {
        "slot": 3,
-       "name": "Humps",
        "cut": 60,
        "impact": 60,
        "shot": 35,
@@ -9280,7 +9322,6 @@
       },
       {
        "slot": 4,
-       "name": "Front Legs",
        "cut": 32,
        "impact": 30,
        "shot": 25,
@@ -9294,7 +9335,6 @@
       },
       {
        "slot": 5,
-       "name": "Back Legs",
        "cut": 44,
        "impact": 44,
        "shot": 35,
@@ -9308,7 +9348,6 @@
       },
       {
        "slot": 6,
-       "name": "Tail",
        "cut": 32,
        "impact": 40,
        "shot": 50,
@@ -9322,7 +9361,6 @@
       },
       {
        "slot": 7,
-       "name": "Tail Tip",
        "cut": 24,
        "impact": 43,
        "shot": 40,
@@ -9455,13 +9493,14 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 2,
-   "part_names": "none (slot index only)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
+       "name": "Head",
        "cut": 25,
        "impact": 26,
        "shot": 22,
@@ -9475,6 +9514,7 @@
       },
       {
        "slot": 1,
+       "name": "Body + Tail",
        "cut": 26,
        "impact": 25,
        "shot": 25,
@@ -9488,6 +9528,7 @@
       },
       {
        "slot": 2,
+       "name": "Back",
        "cut": 36,
        "impact": 30,
        "shot": 40,
@@ -9501,6 +9542,7 @@
       },
       {
        "slot": 3,
+       "name": "Legs",
        "cut": 35,
        "impact": 35,
        "shot": 35,
@@ -9514,6 +9556,7 @@
       },
       {
        "slot": 4,
+       "name": "Nose",
        "cut": 55,
        "impact": 55,
        "shot": 60,
@@ -9527,6 +9570,7 @@
       },
       {
        "slot": 5,
+       "name": "Belly",
        "cut": 36,
        "impact": 30,
        "shot": 30,
@@ -9540,6 +9584,7 @@
       },
       {
        "slot": 6,
+       "name": "Gills",
        "cut": 60,
        "impact": 60,
        "shot": 65,
@@ -9553,6 +9598,7 @@
       },
       {
        "slot": 7,
+       "name": "Uvula",
        "cut": 70,
        "impact": 70,
        "shot": 70,
@@ -10349,7 +10395,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 2,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -10658,7 +10704,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -10745,7 +10791,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -10832,14 +10878,13 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "none (slot index only)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
-       "name": "Head",
        "cut": 55,
        "impact": 50,
        "shot": 45,
@@ -10853,7 +10898,6 @@
       },
       {
        "slot": 1,
-       "name": "Upper Body",
        "cut": 45,
        "impact": 45,
        "shot": 35,
@@ -10867,7 +10911,6 @@
       },
       {
        "slot": 2,
-       "name": "Back",
        "cut": 38,
        "impact": 30,
        "shot": 30,
@@ -10881,7 +10924,6 @@
       },
       {
        "slot": 3,
-       "name": "Front Legs",
        "cut": 30,
        "impact": 30,
        "shot": 25,
@@ -10895,7 +10937,6 @@
       },
       {
        "slot": 4,
-       "name": "Rear",
        "cut": 36,
        "impact": 36,
        "shot": 20,
@@ -10909,7 +10950,6 @@
       },
       {
        "slot": 5,
-       "name": "Rolling",
        "cut": 75,
        "impact": 75,
        "shot": 10,
@@ -10923,7 +10963,6 @@
       },
       {
        "slot": 6,
-       "name": "Belly + Hind Legs",
        "cut": 45,
        "impact": 45,
        "shot": 40,
@@ -11285,7 +11324,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 2,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -12107,13 +12146,14 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 2,
-   "part_names": "none (slot index only)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
+       "name": "Head",
        "cut": 85,
        "impact": 80,
        "shot": 75,
@@ -12127,6 +12167,7 @@
       },
       {
        "slot": 1,
+       "name": "Neck",
        "cut": 40,
        "impact": 40,
        "shot": 45,
@@ -12140,6 +12181,7 @@
       },
       {
        "slot": 2,
+       "name": "Torso",
        "cut": 30,
        "impact": 30,
        "shot": 30,
@@ -12153,6 +12195,7 @@
       },
       {
        "slot": 3,
+       "name": "Resonating Organs",
        "cut": 15,
        "impact": 20,
        "shot": 10,
@@ -12166,6 +12209,7 @@
       },
       {
        "slot": 4,
+       "name": "Tail",
        "cut": 50,
        "impact": 45,
        "shot": 45,
@@ -12179,6 +12223,7 @@
       },
       {
        "slot": 5,
+       "name": "Front Legs",
        "cut": 25,
        "impact": 35,
        "shot": 40,
@@ -12192,6 +12237,7 @@
       },
       {
        "slot": 6,
+       "name": "Back Legs",
        "cut": 60,
        "impact": 60,
        "shot": 65,
@@ -12311,7 +12357,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 2,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -13213,14 +13259,13 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 2,
-   "part_names": "db (byte-validated)",
+   "part_names": "none (slot index only)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
-       "name": "Head",
        "cut": 65,
        "impact": 60,
        "shot": 60,
@@ -13234,7 +13279,6 @@
       },
       {
        "slot": 1,
-       "name": "Neck",
        "cut": 50,
        "impact": 40,
        "shot": 45,
@@ -13248,7 +13292,6 @@
       },
       {
        "slot": 2,
-       "name": "Torso",
        "cut": 25,
        "impact": 25,
        "shot": 25,
@@ -13262,7 +13305,6 @@
       },
       {
        "slot": 3,
-       "name": "Wing Arms",
        "cut": 20,
        "impact": 20,
        "shot": 25,
@@ -13276,7 +13318,6 @@
       },
       {
        "slot": 4,
-       "name": "Front Legs",
        "cut": 40,
        "impact": 40,
        "shot": 40,
@@ -13290,7 +13331,6 @@
       },
       {
        "slot": 5,
-       "name": "Back Legs",
        "cut": 36,
        "impact": 36,
        "shot": 45,
@@ -13304,7 +13344,6 @@
       },
       {
        "slot": 6,
-       "name": "Wings",
        "cut": 26,
        "impact": 26,
        "shot": 20,
@@ -13318,7 +13357,6 @@
       },
       {
        "slot": 7,
-       "name": "Tail",
        "cut": 36,
        "impact": 36,
        "shot": 35,
@@ -13451,7 +13489,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -13768,7 +13806,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -13869,14 +13907,13 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "none (slot index only)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
-       "name": "Head",
        "cut": 50,
        "impact": 50,
        "shot": 50,
@@ -13890,7 +13927,6 @@
       },
       {
        "slot": 1,
-       "name": "Body",
        "cut": 30,
        "impact": 30,
        "shot": 40,
@@ -13904,7 +13940,6 @@
       },
       {
        "slot": 2,
-       "name": "Wings",
        "cut": 25,
        "impact": 25,
        "shot": 30,
@@ -13918,7 +13953,6 @@
       },
       {
        "slot": 3,
-       "name": "Wing Talons",
        "cut": 20,
        "impact": 20,
        "shot": 20,
@@ -13932,7 +13966,6 @@
       },
       {
        "slot": 4,
-       "name": "Feet",
        "cut": 30,
        "impact": 25,
        "shot": 30,
@@ -13946,7 +13979,6 @@
       },
       {
        "slot": 5,
-       "name": "Tail",
        "cut": 45,
        "impact": 45,
        "shot": 35,
@@ -15081,13 +15113,14 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 2,
-   "part_names": "none (slot index only)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
+       "name": "Head",
        "cut": 50,
        "impact": 50,
        "shot": 25,
@@ -15101,6 +15134,7 @@
       },
       {
        "slot": 1,
+       "name": "L. Front Leg",
        "cut": 15,
        "impact": 15,
        "shot": 10,
@@ -15114,6 +15148,7 @@
       },
       {
        "slot": 2,
+       "name": "Back Legs",
        "cut": 38,
        "impact": 38,
        "shot": 20,
@@ -15127,6 +15162,7 @@
       },
       {
        "slot": 3,
+       "name": "Body",
        "cut": 25,
        "impact": 25,
        "shot": 20,
@@ -15140,6 +15176,7 @@
       },
       {
        "slot": 4,
+       "name": "Tail",
        "cut": 20,
        "impact": 20,
        "shot": 10,
@@ -15153,6 +15190,7 @@
       },
       {
        "slot": 5,
+       "name": "R. Front Leg",
        "cut": 15,
        "impact": 15,
        "shot": 10,
@@ -15166,6 +15204,7 @@
       },
       {
        "slot": 6,
+       "name": "Neck",
        "cut": 43,
        "impact": 43,
        "shot": 25,
@@ -15179,6 +15218,7 @@
       },
       {
        "slot": 7,
+       "name": "Fin",
        "cut": 43,
        "impact": 43,
        "shot": 45,
@@ -15771,13 +15811,14 @@
    "hp_matches_db": false,
    "format": "siege",
    "table_count": 2,
-   "part_names": "none (slot index only)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
      "parts": [
       {
        "slot": 0,
+       "name": "Back",
        "cut": 30,
        "impact": 30,
        "shot": 10,
@@ -15791,6 +15832,7 @@
       },
       {
        "slot": 1,
+       "name": "Shell",
        "cut": 15,
        "impact": 15,
        "shot": 10,
@@ -15804,6 +15846,7 @@
       },
       {
        "slot": 2,
+       "name": "Head",
        "cut": 65,
        "impact": 65,
        "shot": 40,
@@ -15817,6 +15860,7 @@
       },
       {
        "slot": 3,
+       "name": "Fin",
        "cut": 22,
        "impact": 22,
        "shot": 15,
@@ -15830,6 +15874,7 @@
       },
       {
        "slot": 4,
+       "name": "Body",
        "cut": 15,
        "impact": 15,
        "shot": 10,
@@ -15843,6 +15888,7 @@
       },
       {
        "slot": 5,
+       "name": "Blowhole",
        "cut": 38,
        "impact": 38,
        "shot": 20,
@@ -15856,6 +15902,7 @@
       },
       {
        "slot": 6,
+       "name": "Weakpoint",
        "cut": 70,
        "impact": 70,
        "shot": 70,
@@ -15962,7 +16009,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,
@@ -16256,7 +16303,7 @@
    "hp_matches_db": true,
    "format": "std",
    "table_count": 1,
-   "part_names": "db (byte-validated)",
+   "part_names": "db (byte-validated, cross-checked)",
    "tables": [
     {
      "index": 0,

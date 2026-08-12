@@ -42,8 +42,8 @@ const OUT = path.join(root, 'data-src', 'hitzones_v4.json');
 const idNames = JSON.parse(readFileSync(path.join(DB, 'db_id_names.json'), 'utf8'));
 const idHp = JSON.parse(readFileSync(path.join(DB, 'db_id_hp.json'), 'utf8'));
 const dmg = JSON.parse(readFileSync(path.join(DB, 'db_damage.json'), 'utf8'));
+const VERIFIED = new Set(JSON.parse(readFileSync(path.join(DB, 'verified-part-names.json'), 'utf8')).verified);
 const KEYS = ['cut', 'impact', 'shot', 'fire', 'water', 'ice', 'thunder', 'dragon', 'stun', 'exhaust'];
-const isBreak = nm => /\(?\bbreak(en)?\)?|broke/i.test(nm);
 
 function getDt(p) { const arc = readFileSync(p), n = arc.readUInt16LE(6);
   for (let i = 0; i < n; i++) { const o = 12 + i * 80, nm = arc.slice(o, o + 64).toString('latin1').replace(/\x00+$/, '');
@@ -172,21 +172,31 @@ for (const f of files) {
   if (start < 0 || !tablesRaw || !tablesRaw.length || !tablesRaw[0]?.length) { out[id] = { name, hp, error: 'table-not-found' }; problems.push(`${id}=${name}:not-found`); continue; }
   if (!small && tablesRaw[0].length < 2) { out[id] = { name, hp, format: mode, error: 'non-standard-format' }; problems.push(`${id}=${name}:non-standard`); continue; }
 
-  // Part names: only from the DB, only when the base table byte-matches in order.
-  const core = name && dmg[name] ? dmg[name].parts.filter(p => !isBreak(p.part)) : null;
+  // Part names. The game files carry NONE - a hit zone's only identity is its
+  // slot index - so every name is community-supplied and has to be earned:
+  //   1. the monster is on the double-confirmed list (MHGUDB and Kiranico agree
+  //      name-for-name; see data-src/db/verified-part-names.json for the 20
+  //      monsters where they don't, which stay unnamed rather than guess), and
+  //   2. the DB's part list still byte-matches decoded table 0 in order here,
+  //      re-checked every run so a data change can't silently carry stale names.
+  // Prefix, not exact length: the DB list continues past table 0 with break and
+  // state variants ("Head (Break)", "Trunk (Ice)") that belong to later tables.
+  const core = name && VERIFIED.has(name) && dmg[name] ? dmg[name].parts : null;
   const base = tablesRaw[0];
   let dbNames = null;
-  if (core && core.length === base.length) {
+  if (core && core.length >= base.length) {
     let ok = true;
     for (let i = 0; i < base.length; i++) { const p = core[i], r = base[i].row;
       if (r[0]!==p.cut||r[1]!==p.impact||r[2]!==p.shot||r[3]!==p.fire||r[4]!==p.water||r[5]!==p.ice||r[6]!==p.thunder||r[7]!==p.dragon) { ok = false; break; } }
-    if (ok) dbNames = core.map(p => p.part);
+    if (ok) dbNames = core.slice(0, base.length).map(p => p.part);
   }
   out[id] = {
     name, em_id: id, db_id: dbId, hp, hp_matches_db: idHp[dbId] > 0 && hp === idHp[dbId],
     format: mode, table_count: tablesRaw.length,
-    part_names: dbNames ? 'db (byte-validated)' : 'none (slot index only)',
-    tables: tablesRaw.map((t, ti) => ({ index: ti, parts: t.map((p, pi) => partObj(p.slot, p.row, mode === 'siege' ? null : (dbNames && ti === 0 ? dbNames[pi] : null))) })),
+    part_names: dbNames ? 'db (byte-validated, cross-checked)' : 'none (slot index only)',
+    // Names ride on table 0 only; build-data.mjs maps them onto the later
+    // tables by slot, since parallel tables are the same parts in another state.
+    tables: tablesRaw.map((t, ti) => ({ index: ti, parts: t.map((p, pi) => partObj(p.slot, p.row, dbNames && ti === 0 ? dbNames[pi] : null)) })),
   };
 }
 const wrapped = {

@@ -52,9 +52,40 @@ Two honesty rules carried through from the extraction:
   hitzone table for a monster, the app shows them as "Table 1 / Table 2"
   rather than guessing which is enraged or broken. Labels will be added as
   they're verified.
-- **Part names only where verified.** Names were assigned only where the
-  extracted table byte-matched the community database's part list in order
-  (36 monsters); everywhere else parts show a numbered label until verified.
+- **Part names only where verified.** See below — 43 monsters carry names;
+  everywhere else parts show a numbered label.
+
+### Part names
+
+**The game files contain no part names.** A hit zone's only identity in the
+RomFS is its slot index: `dttune` is pure numbers, the companion `dtbparts`
+resource is binary config with no strings, and no text table in the game
+(all 119 English `.gmd` files) holds a monster part vocabulary. Every part
+name you see in this app — or in any MHGU database — is community-supplied.
+
+So names have to be earned rather than assumed. A monster's parts are named
+only when both of these hold:
+
+1. the MHGUDB part list byte-matches decoded table 0 **in order**, on all
+   eight damage values, so names line up with slots positionally rather than
+   merely as a set; and
+2. Kiranico's independent part list **agrees name-for-name** with MHGUDB.
+
+That yields 43 monsters. The two sources genuinely disagree on 20 others —
+for Duramboros, MHGUDB calls slot 0 "Head" and Kiranico calls it "Horn"; for
+Fatalis the two lists are offset by a whole position; Ukanlos, Volvidon,
+Lavasioth, Amatsu, Zamtrios, Deviljho and Lagiacrus have similar ordering
+conflicts. Those monsters show "Part N" rather than pick a side. The full
+conflict list, with the specific slots, is recorded in
+[data-src/db/verified-part-names.json](data-src/db/verified-part-names.json).
+
+Note that a value-based match (assign a name to any row whose numbers match a
+named DB part) would name 88% of parts, but cross-checking showed it produces
+confidently wrong labels wherever a monster has repeated values or the two
+sources order parts differently — so it isn't used.
+
+"Part N" is this app's placeholder for "the game gives no name here", the
+same role Kiranico's "NO DATA" plays on their pages. Neither is game data.
 
 ## Local development
 

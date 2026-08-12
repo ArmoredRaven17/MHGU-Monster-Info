@@ -41,9 +41,12 @@ image assets from those projects are redistributed.
 
 ### Kiranico (https://mhgu.kiranico.com/)
 
-Kiranico's MHGU database was used to verify the decoded hitzone tables
-(all values in this app come from the game files, not from Kiranico).
-This attribution is offered as courtesy acknowledgment of their
+Kiranico's MHGU database was used to verify the decoded hitzone tables, and
+as the independent second opinion that gates which monsters get body-part
+names (see "Part names" in the README). All damage values in this app come
+from the game files, not from Kiranico, and no Kiranico text is
+redistributed — only the decision of whether their part list agreed with
+MHGUDB's. This attribution is offered as courtesy acknowledgment of their
 fan-database work.
 
 ---
