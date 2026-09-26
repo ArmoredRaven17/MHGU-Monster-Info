@@ -1,6 +1,6 @@
 # MHGU Monster Viewer — review findings
 
-7 findings (7 open), exported 2026-09-26 from the Review Findings log.
+8 findings (8 open), exported 2026-09-26 from the Review Findings log.
 
 Live log: https://claude.ai/artifact/D2AMYQccRY1ESq5khzYXTB
 
@@ -65,6 +65,16 @@ in the code, that is the reading it was matched to, not the wording of the repor
 
   `docs/render/rom/effect/schedule.js` ~295-355 (`hitLife`, `stepCount`, `stepShells`); `shells.js`
   `slotStep`; `docs/effects/em002_04.json` (28 shell records)
+
+## Bloodbath Diablos (em007_04)
+
+- **[bug] clip** — Steam explosion effects are incomplete, though some parts render
+
+  Reported: the steam explosion effects are not complete. Some parts of them do render.
+
+  Third partial-render report, after Gravios's fire beam and his gas clouds. Same shape as the fire
+  beam in particular — one effect drawing some of its parts but not all — so worth treating the two
+  together if either gets diagnosed.
 
 ## Gravios (em005_00)
 
