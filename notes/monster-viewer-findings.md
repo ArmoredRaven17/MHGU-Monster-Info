@@ -1,6 +1,6 @@
 # MHGU Monster Viewer — review findings
 
-6 findings (6 open), exported 2026-09-26 from the Review Findings log.
+7 findings (7 open), exported 2026-09-26 from the Review Findings log.
 
 Live log: https://claude.ai/artifact/D2AMYQccRY1ESq5khzYXTB
 
@@ -80,6 +80,13 @@ in the code, that is the reading it was matched to, not the wording of the repor
   while the monster's others are fine. Worth comparing the two if one gets diagnosed.
 
   `docs/effects/em005_00.json` (not in the pushed tree)
+
+- **[bug] clip** — Fire beam partially renders
+
+  Reported: the fire beam renders, but only partially.
+
+  Separate from the gas cloud finding — that one is an effect missing entirely on some animations, this
+  one is a single effect drawing incompletely.
 
 ## Khezu (em003_00)
 
