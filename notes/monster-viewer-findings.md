@@ -1,6 +1,6 @@
 # MHGU Monster Viewer — review findings
 
-15 findings (15 open), exported 2026-09-26 from the Review Findings log.
+17 findings (17 open), exported 2026-09-26 from the Review Findings log.
 
 Live log: https://claude.ai/artifact/D2AMYQccRY1ESq5khzYXTB
 
@@ -101,6 +101,20 @@ in the code, that is the reading it was matched to, not the wording of the repor
   Third partial-render report, after Gravios's fire beam and his gas clouds. Same shape as the fire
   beam in particular — one effect drawing some of its parts but not all — so worth treating the two
   together if either gets diagnosed.
+
+## Boltreaver Astalos (em081_04)
+
+- **[bug] clip** — Some attack effects don't render
+
+  Reported: some of his attack effects do not render currently. Which ones was not narrowed down.
+
+- **[nit] render** — Reflection in the wing membrane needs better handling
+
+  Reported: reflection in the wing membrane needs looking into and handling better.
+
+  Filed separately from his missing attack effects — a material or shading question rather than an
+  effect one. Filed as a nit since it is quality of appearance rather than something absent or wrong;
+  move it up if the membrane reads badly enough to hold him back.
 
 ## Gravios (em005_00)
 
