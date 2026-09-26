@@ -1,6 +1,6 @@
 # MHGU Monster Viewer — review findings
 
-2 findings (2 open), exported 2026-09-26 from the Review Findings log.
+3 findings (3 open), exported 2026-09-26 from the Review Findings log.
 
 Live log: https://claude.ai/artifact/D2AMYQccRY1ESq5khzYXTB
 
@@ -15,6 +15,25 @@ Severity: **blocker** should not ship, **bug** is wrong but shippable, **nit** i
 > Pushed viewer HEAD when this was written: `b959955` (2026-09-24). A good deal of effects work
 > existed only locally at that point, so anything here that cites counts is citing the push, not
 > the working tree.
+
+## Rathian line
+
+- **[nit] clip** — Rathian line's DA should be L4, M8
+
+  Set the opening view (DA) to `L4, M8` for all three em001 entries — Rathian (`em001_00`), Gold
+  Rathian (`em001_02`) and Dreadqueen Rathian (`em001_04`). All three currently read
+  `view: {"list": "0", "clip": "Motion[14]_loop"}`.
+
+  One thing to settle before writing it: the Barioth precedent in this file renders a bare
+  `DA: L2, M12.` as `clip: "Motion[12]"`, with no suffix, while the Rathian line's present clip carries
+  `_loop`. Writing `"Motion[8]"` literally would therefore also drop the loop, which is a behaviour
+  change on top of the clip change. If the opening view should keep looping, the value wants to be
+  `"Motion[8]_loop"` instead. Reported as "L4, M8" with no suffix given either way.
+
+  Came in as a directed change rather than a defect, so it is filed as a nit; it is work to do, not
+  context to remember.
+
+  `docs/part-review.json` → `em001_00`, `em001_02`, `em001_04` → `view`
 
 ## em087_00
 
