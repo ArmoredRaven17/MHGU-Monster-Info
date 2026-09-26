@@ -1,6 +1,6 @@
 # MHGU Monster Viewer — review findings
 
-11 findings (11 open), exported 2026-09-26 from the Review Findings log.
+12 findings (12 open), exported 2026-09-26 from the Review Findings log.
 
 Live log: https://claude.ai/artifact/D2AMYQccRY1ESq5khzYXTB
 
@@ -73,6 +73,15 @@ in the code, that is the reading it was matched to, not the wording of the repor
   Reported: the wind beam does not render.
 
   Absent rather than partial.
+
+## Ukanlos (em038_00)
+
+- **[bug] clip** — Ice beams do not render
+
+  Reported: the ice beams do not render, same as Akantor's wind beam.
+
+  The pair is worth noting — Akantor and Ukanlos are the same family, and both have a fully absent
+  beam. If one is diagnosed the other likely follows.
 
 ## Bloodbath Diablos (em007_04)
 
