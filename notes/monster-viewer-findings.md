@@ -1,6 +1,6 @@
 # MHGU Monster Viewer — review findings
 
-4 findings (4 open), exported 2026-09-26 from the Review Findings log.
+5 findings (5 open), exported 2026-09-26 from the Review Findings log.
 
 Live log: https://claude.ai/artifact/D2AMYQccRY1ESq5khzYXTB
 
@@ -65,6 +65,50 @@ in the code, that is the reading it was matched to, not the wording of the repor
 
   `docs/render/rom/effect/schedule.js` ~295-355 (`hitLife`, `stepCount`, `stepShells`); `shells.js`
   `slotStep`; `docs/effects/em002_04.json` (28 shell records)
+
+## Khezu (em003_00)
+
+- **[bug] clip** — L2, M37 shows no shock effect
+
+  Reported: playing list 2, Motion[37] shows no shock effect.
+
+  What the pushed tree gives, as readings matched to that — not as the report itself.
+
+  **List 2 looks like the ceiling posture.** The Khezu block in `motion-states.js` describes his ceiling
+  sleep as "(3, 0x52) ceiling sleep L2 M8 -> hold L0 Motion[55] -> L2 M9 (posture 6, on the ceiling)".
+  Those are the only L2 motions the file names, and both are ceiling. So L2 M37 is most likely a ceiling
+  action, which fits a shock attack being expected there.
+
+  **`MOTION_STATES.em003_00` has no list 2 entries at all.** Every key it defines is list 0 or list 3:
+  `3|Motion[1]`, `3|Motion[2]`, `0|Motion[2]`, `0|Motion[15]`, `0|Motion[19]`, `0|Motion[31]`,
+  `0|Motion[55]`, `3|Motion[13]`, `3|Motion[3..9]`, `3|Motion[12]`, `3|Motion[18]`. Nothing under `2|`
+  exists for him anywhere in the file. Worth weighing carefully though: that table's own header says a
+  motion listed there "changes what the viewer SHOWS while it plays" — state, part sets, timed fires —
+  while an ordinary attack effect starts from the clip's own key events through `proof.js`. So the empty
+  list 2 is suggestive, not proof, and it would only be the cause if this effect was meant to be a
+  state-driven fire.
+
+  **The likelier mechanism is an unexported record.** `schedule.js` drops an effect with the comment
+  "no such record exported: the effect is not there" whenever a clip asks for a pel/key pair that is not
+  in the monster's file. Khezu exports 24 clip records over two pels: `em003_00c` keys 0, 1, 4, 5, 6,
+  30, 60, 90, 250, 3000, and `em003_00u` keys 200, 201, 210, 211, 260, 261, 262, 263, 270, 271, 272,
+  273, 290, 320. If L2 M37 requests a key outside that set, nothing renders and nothing errors — which
+  matches the report exactly.
+
+  **The diagnostic that separates the two:** log the `(pel, key)` that L2 M37 requests and compare
+  against those 24. In the set and still nothing drawn is a runtime problem; outside it is an export
+  gap, and the fix is on the export side rather than the viewer's.
+
+  **One thing to rule out before treating it as missing.** Khezu's shock trap effect is deliberately not
+  on its own motion: the file records that "L3 Motion[2] is also the shock trap's first motion
+  (10, 0x6e), which shows nothing of its own: the trap's effect runs on its hold, L3 Motion[13]", where
+  it plays `c 1105` every 42 and is "shown as paralysis, as Rathian's same motion is". So one reading is
+  that the shock being looked for lives on L3 M13 by design and L2 M37 was never going to show it. That
+  does not fit if what was expected was a ceiling attack's own discharge rather than the trap.
+
+  `docs/render/motion-states.js` (em003_00 block, no `2|` keys); `docs/render/rom/effect/schedule.js`
+  ("no such record exported"); `docs/effects/em003_00.json` (24 clip records, pels `em003_00c` /
+  `em003_00u`)
 
 ## Rathian line
 
