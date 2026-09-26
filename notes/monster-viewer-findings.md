@@ -1,6 +1,6 @@
 # MHGU Monster Viewer — review findings
 
-13 findings (13 open), exported 2026-09-26 from the Review Findings log.
+14 findings (14 open), exported 2026-09-26 from the Review Findings log.
 
 Live log: https://claude.ai/artifact/D2AMYQccRY1ESq5khzYXTB
 
@@ -224,6 +224,16 @@ in the code, that is the reading it was matched to, not the wording of the repor
   `docs/monster-classes.json`, `dev/weld-report.json`
 
 ## Not tied to one monster
+
+- **[bug] render** — Turning monsters are forced to face forward instead of rotating with the animation
+
+  From the animations review. When a monster turns, it appears to be forced to look forward rather
+  than being allowed to turn according to the grid.
+
+  Wanted: a monster whose animation rotates it should free-rotate, rather than staying locked to the
+  grid.
+
+  Not tied to one monster — this is viewer behaviour and affects any monster with a turning animation.
 
 - **[note] data** — Regenerating the coverage board from a fresh clone would blank 29 wired monsters
 
