@@ -1,6 +1,6 @@
 # MHGU Monster Viewer — review findings
 
-8 findings (8 open), exported 2026-09-26 from the Review Findings log.
+10 findings (10 open), exported 2026-09-26 from the Review Findings log.
 
 Live log: https://claude.ai/artifact/D2AMYQccRY1ESq5khzYXTB
 
@@ -97,6 +97,25 @@ in the code, that is the reading it was matched to, not the wording of the repor
 
   Separate from the gas cloud finding — that one is an effect missing entirely on some animations, this
   one is a single effect drawing incompletely.
+
+## Grimclaw Tigrex (em032_04)
+
+- **[bug] clip** — Steam vents from claw smashes are not displaying
+
+  Reported: the steam vents that come off his claw smashes do not display at all.
+
+  Absent rather than partial, unlike the Bloodbath and Gravios reports.
+
+- **[bug] shells** — Rocks from throwing attacks are not showing
+
+  Reported: the attacks that throw rocks do not show the rocks.
+
+  Reported alongside the missing steam vents, but filed separately since they are different effects
+  and may not share a cause.
+
+  Filed under shells rather than clip: rocks reach the scheduler as shell effects through
+  `rockInput()`, which came up in the Dreadking finding. That is only where rocks live generally, not
+  a claim about this monster.
 
 ## Khezu (em003_00)
 
