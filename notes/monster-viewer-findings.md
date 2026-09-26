@@ -1,6 +1,6 @@
 # MHGU Monster Viewer — review findings
 
-10 findings (10 open), exported 2026-09-26 from the Review Findings log.
+11 findings (11 open), exported 2026-09-26 from the Review Findings log.
 
 Live log: https://claude.ai/artifact/D2AMYQccRY1ESq5khzYXTB
 
@@ -65,6 +65,14 @@ in the code, that is the reading it was matched to, not the wording of the repor
 
   `docs/render/rom/effect/schedule.js` ~295-355 (`hitLife`, `stepCount`, `stepShells`); `shells.js`
   `slotStep`; `docs/effects/em002_04.json` (28 shell records)
+
+## Akantor (em033_00)
+
+- **[bug] clip** — Wind beam not rendering
+
+  Reported: the wind beam does not render.
+
+  Absent rather than partial.
 
 ## Bloodbath Diablos (em007_04)
 
