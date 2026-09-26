@@ -7,6 +7,11 @@ Live log: https://claude.ai/artifact/D2AMYQccRY1ESq5khzYXTB
 Severity: **blocker** should not ship, **bug** is wrong but shippable, **nit** is cosmetic,
 **note** is context rather than work.
 
+Titles and detail describe what was seen on screen. The game names almost nothing — parts, effects
+and clips are driven by ID — so a phrase like "the fire rock bomb" is a recall label, not an
+identifier, and is not expected to appear anywhere in the source. Where a finding names a mechanism
+in the code, that is the reading it was matched to, not the wording of the report.
+
 > These findings are about `ArmoredRaven17/mhgu-monster-viewer`, not this repository. This file is
 > the durable copy of the log, checked in here because the cloud session that maintains it runs in a
 > container that gets reclaimed. Code changes belong to the local agent working in the viewer repo;
@@ -52,10 +57,11 @@ Severity: **blocker** should not ship, **bug** is wrong but shippable, **nit** i
   Nargacuga 4 and Deviljho 4. So he is the worst case, not an outlier, and a fix aimed at him covers the
   line.
 
-  One mapping gap: "Fire Rock Bomb" does not appear anywhere in the pushed tree. Effect records are
-  keyed by `pel` / `key` / `path` rather than by name, so that label lives in local work and the record
-  it refers to could not be pinned down from here. Rock behaviour itself is documented in
-  `shells-em043.md` 9 and reaches the scheduler through `rockInput()` as `{ variant, target, floorY }`.
+  On the name: "Fire Rock Bomb" is an observer's description of what the attack looks like, not an
+  identifier, and nothing in the tree carries that string nor should. Records are keyed by `pel` /
+  `key` / `path`. Mechanically the description points at the rock shells, documented in
+  `shells-em043.md` 9 and reaching the scheduler through `rockInput()` as
+  `{ variant, target, floorY }` — the same path the delay-driven stages run down.
 
   `docs/render/rom/effect/schedule.js` ~295-355 (`hitLife`, `stepCount`, `stepShells`); `shells.js`
   `slotStep`; `docs/effects/em002_04.json` (28 shell records)
