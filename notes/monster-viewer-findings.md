@@ -1,6 +1,6 @@
 # MHGU Monster Viewer — review findings
 
-5 findings (5 open), exported 2026-09-26 from the Review Findings log.
+6 findings (6 open), exported 2026-09-26 from the Review Findings log.
 
 Live log: https://claude.ai/artifact/D2AMYQccRY1ESq5khzYXTB
 
@@ -65,6 +65,21 @@ in the code, that is the reading it was matched to, not the wording of the repor
 
   `docs/render/rom/effect/schedule.js` ~295-355 (`hitLife`, `stepCount`, `stepShells`); `shells.js`
   `slotStep`; `docs/effects/em002_04.json` (28 shell records)
+
+## Gravios (em005_00)
+
+- **[bug] clip** — Gas cloud effects render on some animations but not others
+
+  Reported: the gas cloud effects do not render on some animations, but were confirmed rendering on
+  others. So it is per-animation rather than the effect being absent outright.
+
+  Nothing to check against here — `docs/effects/em005_00.json` is not in the pushed tree, so his effect
+  records could not be looked at from this session.
+
+  Possibly the same shape as the Khezu L2 M37 finding, which is also an effect missing on one animation
+  while the monster's others are fine. Worth comparing the two if one gets diagnosed.
+
+  `docs/effects/em005_00.json` (not in the pushed tree)
 
 ## Khezu (em003_00)
 
