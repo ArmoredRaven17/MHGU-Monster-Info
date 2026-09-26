@@ -1,6 +1,6 @@
 # MHGU Monster Viewer — review findings
 
-14 findings (14 open), exported 2026-09-26 from the Review Findings log.
+15 findings (15 open), exported 2026-09-26 from the Review Findings log.
 
 Live log: https://claude.ai/artifact/D2AMYQccRY1ESq5khzYXTB
 
@@ -205,6 +205,18 @@ in the code, that is the reading it was matched to, not the wording of the repor
   context to remember.
 
   `docs/part-review.json` → `em001_00`, `em001_02`, `em001_04` → `view`
+
+## Seregios (em077_00)
+
+- **[note] other** — Seregios shows an '!' effect no other monster has shown yet — why?
+
+  Reported as "Steve", taken as Seregios (`em077_00`) — say if that is wrong.
+
+  He shows an '!' effect that has not turned up on any other monster so far. Open question rather than
+  a known defect: either it is correct and unique to him, or the other monsters are missing something
+  they should have.
+
+  Worth settling which way round it is before treating it as either.
 
 ## em087_00
 
