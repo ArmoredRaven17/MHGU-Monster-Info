@@ -1,6 +1,6 @@
 # MHGU Monster Viewer — review findings
 
-3 findings (3 open), exported 2026-09-26 from the Review Findings log.
+4 findings (4 open), exported 2026-09-26 from the Review Findings log.
 
 Live log: https://claude.ai/artifact/D2AMYQccRY1ESq5khzYXTB
 
@@ -15,6 +15,50 @@ Severity: **blocker** should not ship, **bug** is wrong but shippable, **nit** i
 > Pushed viewer HEAD when this was written: `b959955` (2026-09-24). A good deal of effects work
 > existed only locally at that point, so anything here that cites counts is citing the push, not
 > the working tree.
+
+## Dreadking Rathalos (em002_04)
+
+- **[bug] shells** — Fire Rock Bomb behaves oddly under the new pause-effects-with-animation behaviour
+
+  Reported: the effect renders, but behaves oddly now that effects pause with the animation. Suspicion
+  is that effects carrying time delays may need omitting.
+
+  What the pushed tree shows about why. Shell-driven effects do not advance on the clip's frame alone.
+  `schedule.js` hands `stepShells` two time sources that are independent of it:
+
+  - `hitLife: true` — "the hit-slot life of a timer-0 shell01 (its hit data's delay + duration;
+    shells.js slotStep)". The comment states plainly that without it "the fire and explosions would end
+    at their first move". So a delay+duration window is exactly what keeps the fire and explosions alive.
+  - `stepCount: this.frame` — "the free-running timer Rathian's hover dust pulses on (vtable +0x1dc
+    0xcee250: every 100 moves since her setup)", counted from the mount as a stand-in for its phase.
+    Free-running by description, not clip-locked.
+
+  That gives two failure shapes, and which one it is decides the fix. Either the pause halts stepping,
+  so a delayed stage never elapses and the sequence hangs at whatever stage it had reached (the rock
+  lands but the explosion never comes); or the pause halts only the clip while those counters keep
+  advancing, so stages fire on a frozen monster and drift out of sync. Worth confirming which is
+  happening before changing anything — the pause code is not in the pushed tree, so this could not be
+  read here.
+
+  On omitting delayed effects: it would work, but note what it costs. `hitLife` exists specifically to
+  stop the fire and explosions ending at their first move, so omitting the delayed records trades wrong
+  timing for the effect being absent. Where it is the explosion itself that is delayed, omission and the
+  hang look the same on screen. A gate that freezes the delay counters alongside the clip, rather than
+  dropping the records, would keep both.
+
+  Blast radius if a rule is written against `when == "shell"`: 112 records across 10 monsters in the
+  pushed tree, and Dreadking is the heaviest by some margin — 28 shell records of his 78, against 17 for
+  Dreadqueen and 12–13 for the rest of the Rathian and Rathalos line, plus Khezu 11, Savage Deviljho 5,
+  Nargacuga 4 and Deviljho 4. So he is the worst case, not an outlier, and a fix aimed at him covers the
+  line.
+
+  One mapping gap: "Fire Rock Bomb" does not appear anywhere in the pushed tree. Effect records are
+  keyed by `pel` / `key` / `path` rather than by name, so that label lives in local work and the record
+  it refers to could not be pinned down from here. Rock behaviour itself is documented in
+  `shells-em043.md` 9 and reaches the scheduler through `rockInput()` as `{ variant, target, floorY }`.
+
+  `docs/render/rom/effect/schedule.js` ~295-355 (`hitLife`, `stepCount`, `stepShells`); `shells.js`
+  `slotStep`; `docs/effects/em002_04.json` (28 shell records)
 
 ## Rathian line
 
