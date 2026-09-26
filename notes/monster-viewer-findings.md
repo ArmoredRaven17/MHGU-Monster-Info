@@ -1,6 +1,6 @@
 # MHGU Monster Viewer — review findings
 
-12 findings (12 open), exported 2026-09-26 from the Review Findings log.
+13 findings (13 open), exported 2026-09-26 from the Review Findings log.
 
 Live log: https://claude.ai/artifact/D2AMYQccRY1ESq5khzYXTB
 
@@ -82,6 +82,15 @@ in the code, that is the reading it was matched to, not the wording of the repor
 
   The pair is worth noting — Akantor and Ukanlos are the same family, and both have a fully absent
   beam. If one is diagnosed the other likely follows.
+
+## Barioth (em042_00)
+
+- **[bug] clip** — Ice ball breath not rendering
+
+  Reported: the ice ball breath does not render.
+
+  Absent rather than partial. Fourth fully absent breath or beam, after Akantor, Ukanlos and
+  Grimclaw's steam vents.
 
 ## Bloodbath Diablos (em007_04)
 
